@@ -1,0 +1,8 @@
+<%- include('partials/header') %>
+<h1>Find a TV show</h1>
+<form action="/search" method="GET">
+  <label for="q">Show title</label>
+  <input type="text" id="q" name="q" minlength="2" maxlength="100" required>
+  <button type="submit">Search</button>
+</form>
+<%- include('partials/footer') %>
