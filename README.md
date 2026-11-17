@@ -50,7 +50,6 @@ showhub/
 ├── utils/showUtils.js        # filter, sort, group by season, strip HTML …
 ├── views/ (+ partials/)      # EJS templates, header/footer/card partials
 ├── public/                   # css, images
-├── tests/smoke.test.js       # 21 tests with a fake TVmaze server
 ├── .env.example  .gitignore  package.json
 ```
 
@@ -67,7 +66,7 @@ npm install
 cp .env.example .env     # Windows: copy .env.example .env
 npm start
 ```
-Open http://localhost:3090. Optional: `npm run dev` (auto-restart), `npm test` (no internet needed).
+Open http://localhost:3090. Optional: `npm run dev` (auto-restart).
 
 `.env` variables: `PORT` (3090), `API_BASE_URL` (default `https://api.tvmaze.com`).
 

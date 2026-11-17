@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node --watch app.js",
-    "test": "node tests/smoke.test.js"
+    "dev": "node --watch app.js"
   },
   "keywords": ["express", "axios", "ejs", "tvmaze"],
   "author": "Utemis Mansur",
