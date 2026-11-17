@@ -1,6 +1,7 @@
 const tvmaze = require('../services/tvmazeService');
 const { normalizeShow, groupBySeason, uniqueCast } = require('../utils/showUtils');
 
+// Fetches and normalizes a show before rendering its overview.
 exports.getShow = async (req, res, next) => {
   try {
     const show = normalizeShow(await tvmaze.getShow(req.params.id));
@@ -10,6 +11,7 @@ exports.getShow = async (req, res, next) => {
   }
 };
 
+// Fetches a show and its episodes, then renders episodes grouped by season.
 exports.getEpisodes = async (req, res, next) => {
   try {
     const [rawShow, episodes] = await Promise.all([
@@ -27,6 +29,7 @@ exports.getEpisodes = async (req, res, next) => {
   }
 };
 
+// Fetches a show's cast and renders the deduplicated cast list.
 exports.getCast = async (req, res, next) => {
   try {
     const [rawShow, rawCast] = await Promise.all([

@@ -16,6 +16,7 @@ class ApiError extends Error {
   }
 }
 
+// Converts Axios errors into ApiErrors with messages safe to show users.
 function toApiError(err, what) {
   if (err.response) {
     const s = err.response.status;
@@ -32,6 +33,7 @@ function toApiError(err, what) {
   return new ApiError(503, 'Could not reach TVmaze. Check your internet connection and try again.', err);
 }
 
+// Keep successful responses for five minutes to avoid unnecessary TVmaze requests.
 const cache = new Map();
 const TTL_MS = 5 * 60 * 1000;
 

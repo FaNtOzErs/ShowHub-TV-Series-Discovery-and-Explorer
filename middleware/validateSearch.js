@@ -1,5 +1,6 @@
 const { readFilters, GENRES, SORTS } = require('../utils/showUtils');
 
+// Checks the title length and content, then attaches normalized search filters.
 module.exports = function validateSearch(req, res, next) {
   const src = req.method === 'POST' ? req.body || {} : req.query;
   const q = typeof src.q === 'string' ? src.q.trim().replace(/\s+/g, ' ') : '';

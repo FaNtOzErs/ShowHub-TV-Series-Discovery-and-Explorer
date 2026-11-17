@@ -1,6 +1,7 @@
 const tvmaze = require('../services/tvmazeService');
 const { normalizePerson, creditsToShows } = require('../utils/showUtils');
 
+// Fetches an actor and credits, then renders the normalized profile.
 exports.getActor = async (req, res, next) => {
   try {
     const [person, credits] = await Promise.all([

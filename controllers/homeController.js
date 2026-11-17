@@ -3,6 +3,7 @@ const { GENRES, STATUSES, SORTS, processShows, readFilters } = require('../utils
 
 const PAGE_SIZE = 24;
 
+// Reads home-page filters, fetches shows, and renders the index.
 exports.getHome = async (req, res, next) => {
   try {
     const filters = readFilters(req.query);
@@ -25,11 +26,13 @@ exports.getHome = async (req, res, next) => {
   }
 };
 
+// Redirects validated form input to the GET search results route.
 exports.postSearch = (req, res) => {
   const { q, genre, sort } = req.searchInput;
   res.redirect(303, '/search?' + new URLSearchParams({ q, genre, sort }).toString());
 };
 
+// Searches TVmaze with validated input and renders the results.
 exports.getSearch = async (req, res, next) => {
   try {
     const { q, genre, status, sort } = req.searchInput;
