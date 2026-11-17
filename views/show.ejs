@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+<%- include('partials/showTabs', { show, tab }) %>
+
+<article class="detail">
+  <img class="poster" src="<%= show.poster %>" alt="Poster of <%= show.name %>">
+  <div>
+    <h1><%= show.name %></h1>
+    <p>
+      <% if (show.rating !== null) { %><span class="badge">★ <%= show.rating.toFixed(1) %> / 10</span><% } else { %><span class="badge badge-off">No rating yet</span><% } %>
+      <% show.genres.forEach(g => { %><a class="chip" href="/?genre=<%= encodeURIComponent(g) %>"><%= g %></a><% }) %>
+    </p>
+    <p class="summary"><%= show.summary %></p>
+    <dl class="facts">
+      <dt>Status</dt><dd><%= show.status %></dd>
+      <dt>Premiered</dt><dd><%= fmt.formatDate(show.premiered) %></dd>
+      <% if (show.ended) { %><dt>Ended</dt><dd><%= fmt.formatDate(show.ended) %></dd><% } %>
+      <dt>Network</dt><dd><%= show.network %></dd>
+      <dt>Language</dt><dd><%= show.language %></dd>
+      <dt>Runtime</dt><dd><%= show.runtime ? show.runtime + ' min' : '—' %></dd>
+    </dl>
+    <p>
+      <a class="btn" href="/show/<%= show.id %>/episodes">Episodes</a>
+      <a class="btn btn-secondary" href="/show/<%= show.id %>/cast">Cast</a>
+      <% if (show.officialSite) { %><a class="btn btn-secondary" href="<%= show.officialSite %>" target="_blank" rel="noopener">Official site</a><% } %>
+    </p>
+  </div>
+</article>
+
+<%- include('partials/footer') %>

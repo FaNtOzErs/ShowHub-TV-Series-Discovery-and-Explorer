@@ -1,8 +1,77 @@
 <%- include('partials/header') %>
-<h1>Find a TV show</h1>
-<form action="/search" method="GET">
-  <label for="q">Show title</label>
-  <input type="text" id="q" name="q" minlength="2" maxlength="100" required>
-  <button type="submit">Search</button>
-</form>
+
+<section class="hero">
+  <h1>Find your next TV show</h1>
+  <p class="muted">Search any series, then explore seasons, episodes and cast.</p>
+
+  <form class="form" action="/search" method="POST" novalidate>
+    <div class="field grow">
+      <label for="q">Show title</label>
+      <input type="text" id="q" name="q" value="<%= query %>" placeholder="e.g. Breaking Bad" maxlength="100" aria-describedby="q-help">
+      <small id="q-help" class="muted">2 to 100 characters.</small>
+    </div>
+    <div class="field">
+      <label for="genre">Genre</label>
+      <select id="genre" name="genre">
+        <option value="">Any genre</option>
+        <% genres.forEach(g => { %><option value="<%= g %>" <%= filters.genre === g ? 'selected' : '' %>><%= g %></option><% }) %>
+      </select>
+    </div>
+    <div class="field">
+      <label for="sort">Sort by</label>
+      <select id="sort" name="sort">
+        <% Object.entries(sorts).forEach(([k, v]) => { %><option value="<%= k %>" <%= filters.sort === k ? 'selected' : '' %>><%= v %></option><% }) %>
+      </select>
+    </div>
+    <button type="submit" class="btn">Search</button>
+  </form>
+  <% if (error) { %><p class="alert" role="alert"><%= error %></p><% } %>
+</section>
+
+<% if (heading) { %>
+<section>
+  <h2><%= heading %></h2>
+
+  <form class="form form-inline" action="/" method="GET">
+    <div class="field">
+      <label for="f-genre">Genre</label>
+      <select id="f-genre" name="genre">
+        <option value="">All</option>
+        <% genres.forEach(g => { %><option value="<%= g %>" <%= filters.genre === g ? 'selected' : '' %>><%= g %></option><% }) %>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-status">Status</label>
+      <select id="f-status" name="status">
+        <option value="">All</option>
+        <% statuses.forEach(st => { %><option value="<%= st %>" <%= filters.status === st ? 'selected' : '' %>><%= st %></option><% }) %>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-sort">Sort by</label>
+      <select id="f-sort" name="sort">
+        <% Object.entries(sorts).forEach(([k, v]) => { %><option value="<%= k %>" <%= filters.sort === k ? 'selected' : '' %>><%= v %></option><% }) %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-secondary">Apply</button>
+  </form>
+
+  <% if (shows.length) { %>
+    <div class="grid">
+      <% shows.forEach(s => { %><%- include('partials/showCard', { s }) %><% }) %>
+    </div>
+  <% } else { %>
+    <div class="empty"><h3>No shows match these filters</h3><p class="muted">Try another genre or status, or go to the next page.</p></div>
+  <% } %>
+
+  <% if (pagination) { %>
+  <div class="pager">
+    <% if (pagination.prev) { %><a class="btn btn-secondary" href="<%= pagination.prev %>">← Previous</a><% } %>
+    <span class="muted">Page <%= pagination.page + 1 %></span>
+    <% if (pagination.next) { %><a class="btn btn-secondary" href="<%= pagination.next %>">Next →</a><% } %>
+  </div>
+  <% } %>
+</section>
+<% } %>
+
 <%- include('partials/footer') %>

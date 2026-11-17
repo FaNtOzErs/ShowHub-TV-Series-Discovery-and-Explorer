@@ -1,0 +1,14 @@
+<a class="card" href="/show/<%= s.id %>">
+  <img src="<%= s.image %>" alt="Poster of <%= s.name %>" loading="lazy">
+  <div class="card-body">
+    <h3><%= s.name %></h3>
+    <p class="muted"><%= s.year %> · <%= s.status %></p>
+    <p>
+      <% if (s.rating !== null) { %><span class="badge">★ <%= s.rating.toFixed(1) %></span>
+      <% } else { %><span class="badge badge-off">No rating</span><% } %>
+    </p>
+    <p class="chips">
+      <% if (s.genres.length) { s.genres.slice(0, 3).forEach(g => { %><span class="chip"><%= g %></span><% }) } else { %><span class="chip">No genre</span><% } %>
+    </p>
+  </div>
+</a>

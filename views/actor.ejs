@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<article class="detail">
+  <img class="poster" src="<%= actor.image %>" alt="Photo of <%= actor.name %>">
+  <div>
+    <h1><%= actor.name %></h1>
+    <dl class="facts">
+      <dt>Born</dt><dd><%= actor.birthday %><%= actor.age !== null && !actor.deathday ? ' (age ' + actor.age + ')' : '' %></dd>
+      <% if (actor.deathday) { %><dt>Died</dt><dd><%= actor.deathday %><%= actor.age !== null ? ' (aged ' + actor.age + ')' : '' %></dd><% } %>
+      <dt>Country</dt><dd><%= actor.country %></dd>
+      <dt>Gender</dt><dd><%= actor.gender %></dd>
+      <dt>TV shows</dt><dd><%= shows.length %></dd>
+    </dl>
+  </div>
+</article>
+
+<h2>Known for</h2>
+<% if (shows.length) { %>
+  <div class="grid">
+    <% shows.forEach(s => { %><%- include('partials/showCard', { s }) %><% }) %>
+  </div>
+<% } else { %>
+  <div class="empty"><h3>No credits found</h3></div>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<h1>Results for “<%= q %>”</h1>
+<p class="muted">
+  <% if (total > 0) { %>Found <%= total %> show<%= total === 1 ? '' : 's' %><% if (filters.genre) { %>, <%= shows.length %> in <%= filters.genre %><% } %>.
+  <% } else { %>The API returned nothing.<% } %>
+</p>
+
+<form class="form form-inline" action="/search" method="GET">
+  <div class="field grow">
+    <label for="q">Show title</label>
+    <input type="text" id="q" name="q" value="<%= q %>" maxlength="100">
+  </div>
+  <div class="field">
+    <label for="genre">Genre</label>
+    <select id="genre" name="genre">
+      <option value="">Any genre</option>
+      <% genres.forEach(g => { %><option value="<%= g %>" <%= filters.genre === g ? 'selected' : '' %>><%= g %></option><% }) %>
+    </select>
+  </div>
+  <div class="field">
+    <label for="sort">Sort by</label>
+    <select id="sort" name="sort">
+      <% Object.entries(sorts).forEach(([k, v]) => { %><option value="<%= k %>" <%= filters.sort === k ? 'selected' : '' %>><%= v %></option><% }) %>
+    </select>
+  </div>
+  <button type="submit" class="btn">Search again</button>
+</form>
+
+<% if (shows.length) { %>
+  <div class="grid">
+    <% shows.forEach(s => { %><%- include('partials/showCard', { s }) %><% }) %>
+  </div>
+<% } else { %>
+  <div class="empty">
+    <h3>No results</h3>
+    <p class="muted">
+      <% if (total > 0) { %>Nothing matches the genre filter. Choose “Any genre”.<% } else { %>No show matches “<%= q %>”. Check the spelling or try a shorter title.<% } %>
+    </p>
+    <a class="btn" href="/">Back to home</a>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

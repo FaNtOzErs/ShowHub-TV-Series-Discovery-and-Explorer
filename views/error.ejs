@@ -1,0 +1,8 @@
+<%- include('partials/header') %>
+<section class="empty error-page">
+  <p class="code"><%= status %></p>
+  <h1><%= heading %></h1>
+  <p><%= message %></p>
+  <p><a class="btn" href="/">Back to home</a> <a class="btn btn-secondary" href="javascript:history.back()">Go back</a></p>
+</section>
+<%- include('partials/footer') %>

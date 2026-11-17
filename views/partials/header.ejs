@@ -1,11 +1,20 @@
-<html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><%= title %></title>
+  <title><%= title %> | ShowHub</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header><nav><a href="/">ShowHub</a></nav></header>
-  <main>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="/">Show<span>Hub</span></a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/?sort=rating">Top rated</a>
+        <a href="/?sort=premiere">New</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container">

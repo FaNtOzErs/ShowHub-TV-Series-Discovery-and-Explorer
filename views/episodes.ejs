@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<h1><a class="plain" href="/show/<%= show.id %>"><%= show.name %></a></h1>
+<%- include('partials/showTabs', { show, tab }) %>
+
+<% if (seasons.length) { %>
+  <p class="muted"><%= seasons.length %> season<%= seasons.length === 1 ? '' : 's' %> · <%= totalEpisodes %> episodes</p>
+  <% seasons.forEach((s, i) => { %>
+  <details class="season" <%= i === 0 ? 'open' : '' %>>
+    <summary>
+      Season <%= s.season %>
+      <span class="muted"><%= s.count %> episode<%= s.count === 1 ? '' : 's' %><% if (s.avgRating !== null) { %> · avg ★ <%= s.avgRating.toFixed(1) %><% } %></span>
+    </summary>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Title</th><th>Aired</th><th>Rating</th></tr></thead>
+      <tbody>
+        <% s.episodes.forEach(e => { %>
+        <tr>
+          <td><%= e.number !== null ? e.number : 'Sp.' %></td>
+          <td><strong><%= e.name %></strong><% if (e.summary) { %><br><small class="muted"><%= e.summary %></small><% } %></td>
+          <td><%= e.airdate %></td>
+          <td><%= e.rating !== null ? '★ ' + e.rating.toFixed(1) : '—' %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    </div>
+  </details>
+  <% }) %>
+<% } else { %>
+  <div class="empty"><h3>No episodes yet</h3><p class="muted">TVmaze has no episode list for this show.</p></div>
+<% } %>
+
+<%- include('partials/footer') %>

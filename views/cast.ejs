@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+<h1><a class="plain" href="/show/<%= show.id %>"><%= show.name %></a></h1>
+<%- include('partials/showTabs', { show, tab }) %>
+
+<% if (cast.length) { %>
+  <div class="grid grid-small">
+    <% cast.forEach(c => { %>
+    <a class="card" href="/actor/<%= c.id %>">
+      <img src="<%= c.image %>" alt="Photo of <%= c.name %>" loading="lazy">
+      <div class="card-body"><h3><%= c.name %></h3><p class="muted">as <%= c.character %></p></div>
+    </a>
+    <% }) %>
+  </div>
+<% } else { %>
+  <div class="empty"><h3>No cast information</h3><p class="muted">TVmaze has no cast list for this show.</p></div>
+<% } %>
+
+<%- include('partials/footer') %>
