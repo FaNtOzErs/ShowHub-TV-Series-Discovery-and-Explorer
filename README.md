@@ -67,9 +67,9 @@ npm install
 cp .env.example .env     # Windows: copy .env.example .env
 npm start
 ```
-Open http://localhost:3000. Optional: `npm run dev` (auto-restart), `npm test` (no internet needed).
+Open http://localhost:3090. Optional: `npm run dev` (auto-restart), `npm test` (no internet needed).
 
-`.env` variables: `PORT` (default 3000), `API_BASE_URL` (default `https://api.tvmaze.com`).
+`.env` variables: `PORT` (3090), `API_BASE_URL` (default `https://api.tvmaze.com`).
 
 ## Credits
 - Data: [TVmaze](https://www.tvmaze.com/api) (CC BY-SA). 
