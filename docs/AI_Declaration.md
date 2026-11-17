@@ -2,11 +2,9 @@
 
 | Item | Your answer |
 |---|---|
-| Student name / ID | Utemis Mansur |
-| AI tool(s) used | Claude (Anthropic), Copilot |
-| What I asked the AI to do | Complete the ShowHub project from my initial setup (app.js, search route, TVmaze service): create the remaining routes, controllers, middleware, EJS views, CSS, utility functions, smoke tests and README; review error handling. |
-| Which files/parts contain AI-assisted code | controllers/*, routes/index.js, middleware/*, utils/showUtils.js, services/tvmazeService.js (error mapping, cache), views/*.ejs, public/css/style.css, README.md, package.json, .env.example, app.js (middleware-order comments), docs/AI_Declaration.md. The initial project setup, app skeleton and the first service function were written by me. |
-| What I changed, tested or wrote myself | I implemented the main logic in the controllers, middleware, routes, services, views and partials. |
-| I confirm I understand and can explain all submitted code | Yes |
-
-I will keep my prompts and the AI outputs for 30 days after final grades are issued.
+| Student name / ID | Utemis Mansur / IT |
+| AI tool(s) used | Claude (Anthropic)  |
+| What I asked the AI to do | I requested a code review to see where I made mistakes. Also requested help with creating CSS. |
+| Which files/parts contain AI-assisted code |All files of the project: app.js, routes/, controllers/, public/css/style.css, package.json, README.md,  |
+| What I changed, tested or wrote myself | I read and traced line by line; which pages and errors I tested in the browser with the real TVmaze API; what I edited myself and how; git commits and pushes I made. |
+| I confirm I understand and can explain all submitted code | [Yes] |

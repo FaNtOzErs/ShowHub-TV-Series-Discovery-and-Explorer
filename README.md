@@ -16,6 +16,13 @@ Project for VR 113153 Web Development II (Individual Project, 2026).
 - Dark responsive design (desktop and mobile), labeled forms, accessible focus styles
 - Friendly error pages for: network errors, timeouts, 404, 429 rate limit, 5xx, invalid input, unknown routes
 
+## Screenshots
+![Show index](docs/screenshots/1.png)
+
+![Show details](docs/screenshots/2.png)
+
+![Episodes and cast](docs/screenshots/3.png)
+
 ## TVmaze requests used (Axios, `services/tvmazeService.js`)
 | Request | Used for |
 |---|---|
@@ -60,7 +67,7 @@ showhub/
 
 ## Installation
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/FaNtOzErs/ShowHub-TV-Series-Discovery-and-Explorer.git showhub
 cd showhub
 npm install
 cp .env.example .env     # Windows: copy .env.example .env
